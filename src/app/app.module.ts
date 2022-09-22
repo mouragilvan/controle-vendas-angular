@@ -4,15 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from "./pages/pages.module";
+import { CustomTableComponent } from './components/custom-table/custom-table.component';
+import { CommonModule } from "@angular/common";
 
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent        
   ],
   imports: [    
     AppRoutingModule,
     BrowserModule,    
+    CommonModule,
     PagesModule   
   ],
   providers: [],

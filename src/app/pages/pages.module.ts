@@ -5,17 +5,22 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '@app/components/components.module';
+import { ProductsComponent } from '@app/pages/products/products.component';
 @NgModule({
   declarations: [
    InicioComponent,
    CustomersComponent,
-   CustomerComponent
+   CustomerComponent,
+   ProductsComponent
   ],
   imports: [
    PagesRoutingModule,
    CommonModule,
-   ReactiveFormsModule
+   ReactiveFormsModule ,
+   ComponentsModule     
    ],
+   
   providers: []
 })
 export class PagesModule { }
