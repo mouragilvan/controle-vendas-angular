@@ -7,12 +7,14 @@ import { CustomerComponent } from './customer/customer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '@app/components/components.module';
 import { ProductsComponent } from '@app/pages/products/products.component';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
    InicioComponent,
    CustomersComponent,
    CustomerComponent,
-   ProductsComponent
+   ProductsComponent,
+   ProductComponent
   ],
   imports: [
    PagesRoutingModule,

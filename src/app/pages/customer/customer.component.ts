@@ -25,39 +25,41 @@ export class CustomerComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+
     const formatter = new Intl.DateTimeFormat("pt-BR");
-      this.myform = new FormGroup({
-        // name: new FormGroup({
-        //     firstName: new FormControl('', Validators.required), 
-        //     lastName: new FormControl('', Validators.required),
-        // }),
-        name: new FormControl(this.customer?.name, [
-          Validators.required
-        ]),
-        cpf: new FormControl(this.customer?.cpf, [
-          Validators.required
-        ]),
-        birthDate: new FormControl(formatter.format(this.customer?.birthDate), [
-          Validators.required
-        ]),
-        phone: new FormControl(this.customer?.phone, [
-          Validators.required
-        ]),
-        email: new FormControl(this.customer?.email, [
-          Validators.required,
-          Validators.pattern("[^ @]*@[^ @]*")
-        ]),
-        address: new FormControl(this.customer?.address?.address, [
-          Validators.required
-        ]),
-        district: new FormControl(this.customer?.address?.district, [
-          Validators.required
-        ]),
-        number: new FormControl(this.customer?.address?.number, [
-          Validators.required
-        ])
-      });
+    const date = this.customer?.birthDate != undefined ? formatter.format(this.customer?.birthDate) : '';
+
+    this.myform = new FormGroup({
+      // name: new FormGroup({
+      //     firstName: new FormControl('', Validators.required), 
+      //     lastName: new FormControl('', Validators.required),
+      // }),
+      name: new FormControl(this.customer?.name, [
+        Validators.required
+      ]),
+      cpf: new FormControl(this.customer?.cpf, [
+        Validators.required
+      ]),
+      birthDate: new FormControl(date, [
+        Validators.required
+      ]),
+      phone: new FormControl(this.customer?.phone, [
+        Validators.required
+      ]),
+      email: new FormControl(this.customer?.email, [
+        Validators.required,
+        Validators.pattern("[^ @]*@[^ @]*")
+      ]),
+      address: new FormControl(this.customer?.address?.address, [
+        Validators.required
+      ]),
+      district: new FormControl(this.customer?.address?.district, [
+        Validators.required
+      ]),
+      number: new FormControl(this.customer?.address?.number, [
+        Validators.required
+      ])
+    });
 
 
   }
