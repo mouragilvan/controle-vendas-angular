@@ -5,11 +5,12 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
+import { SalesComponent } from './sales/sales.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: InicioComponent
+    component: SalesComponent
   },
   {
     path: 'customers',
