@@ -9,10 +9,14 @@ export class SalesComponent implements OnInit {
 
   public sales = sales;
 
- 
+  public sale: Sale;
 
   constructor() { 
        
+  }
+
+  setSale(sale: Sale){
+     this.sale = sale;
   }
 
   ngOnInit(): void {
