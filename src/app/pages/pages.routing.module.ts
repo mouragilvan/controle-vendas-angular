@@ -6,6 +6,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { SalesComponent } from './sales/sales.component';
+import { SaleComponent } from './sale/sale.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductComponent
+  },
+  {
+    path: 'sale',
+    component: SaleComponent
   }
 ];
 
