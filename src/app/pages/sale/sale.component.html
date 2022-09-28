@@ -6,24 +6,62 @@
     <div class="mt-3">
         <form [formGroup]="myform">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 no-padding">
                     <input type="text" class="form-control" formControlName="name" placeholder="Escolha um produto"
                         (input)="search()" />
                 </div>
             </div>
-            <div *ngIf="itemSelected.length>0">
-                <div *ngFor="let item of itemSelected"  class="row" style="background-color: gray">
-                    <div class="col-6" style="border-bottom: 1px solid gray;">
+            <div *ngIf="itemSelected.length>0" class="mt-4">
+                <div *ngFor="let item of itemSelected"  class="row mt-3">
+                    <div class="col-5 lightcolor">
                         {{item.name}}
+                        <span style="float: right">
+                            QUANTIDADE:&nbsp;
+                        <button class="btn btn-primary" (click)="setQuantidade('sub',item)">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        {{item.quantidade}}
+                        <button class="btn btn-primary" (click)="setQuantidade('sum',item)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                       </span>
                     </div>
                     
-                    <div class="col-2">
-                        <button class="btn btn-success">
+                    <div class="col-3 lightcolor no-padding">
+                        <button class="btn btn-success btn-block" (click)="add(item)">
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
                 </div>
             </div>
+            <div *ngIf="itensList.length > 0" class="row">
+                <div class="col-8">
+                    <hr/>
+                </div>
+            </div> 
+            <div *ngIf="itensList.length > 0" class="row mt-4" >
+              <div class="col-5 pt-2" style="border: 1px solid lightgray;">
+                <p *ngFor="let p of itensList">
+                    {{p?.name}}
+                    <span style="float: right">
+                        QUANTIDADE:&nbsp;
+                    <button class="btn btn-primary" (click)="setQuantidade('sub',p)">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    {{p.quantidade}}
+                    <button class="btn btn-primary" (click)="setQuantidade('sum',p)">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                   </span>
+                    
+                </p> 
+              </div>
+              <div class="col-3 no-padding" >
+                <h2><span class="badge badge-primary btn-block">Total: R$ {{total}}</span></h2>
+                <button class="btn btn-success  btn-block">Salvar pedido</button>
+              </div>              
+            </div>
+
         </form>
     </div>
 </div>

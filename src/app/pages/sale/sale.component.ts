@@ -11,17 +11,85 @@ export class SaleComponent implements OnInit {
 
   products = products;
   itemSelected: Product[] = [];
-
   myform: FormGroup;
+  itensList = [];
+  total = 0;
+
 
   constructor() {
+
+  }
+
+  ngOnInit(): void {
+    this.myform = new FormGroup({
+      name: new FormControl('', []),
+      products: new FormControl([], []),
+      total: new FormControl('', [])
+    });
+  }
+
+  setQuantidade(op: string, item: Product) {
+    if (op == "sum") {
+      item.quantidade++;
+    }
+    if (op == "sub") {
+      if(item.quantidade>0){
+        item.quantidade--;
+        if(item.quantidade==0){
+          this.remove(item);
+        }
+      }
+      
+    }
+    console.log(item);
+  }
+
+  add(item) {   
+    for( let p of this.itensList ){
+        if(p.id == item.id){
+            p.quantidade +=item.quantidade;
+            return;
+        }
+    } 
+    this.myform.value.products.push(item);
+    this.itensList.push(item);
+    this.itensList.map(el => {
+      this.total += el.price;
+    });
+    this.myform.value.total = this.total;
+  }
+
+  remove(item) {
+    this.myform.value.products = this.itensList.filter(el => {
+      if (el.id != item.id) {
+        return el;
+      }
+    });
+
+    this.itensList = this.itensList.filter(el => {
+      if (el.id != item.id) {
+        return el;
+      }
+    });
+
+    this.itensList.map(el => {
+      this.total -= el.price;
+    });
+
+    this.myform.value.total = this.total;
+
+    if (this.itensList.length == 0) {
+      this.myform.value.total = 0;
+      this.total = 0;
+    }
+
 
   }
 
   search() {
     let name = this.myform.value.name;
     name = name.trim();
-    if(name==""){
+    if (name == "") {
       this.itemSelected = [];
       return;
     }
@@ -32,30 +100,23 @@ export class SaleComponent implements OnInit {
         null;
       }
     });
-    if (product !=null) {
-      
+    if (product != null) {
+
       this.itemSelected.push(product);
 
       //Remover duplicidades
       this.itemSelected = this.itemSelected.reduce((acc, curr) => {
-        if(acc.find(item => item.name === curr.name)) return acc;
+        if (acc.find(item => item.name === curr.name)) return acc;
         return [...acc, curr]
       }, []);
 
-    }else{
+    } else {
 
       this.itemSelected = [];
     }
 
   }
 
-  ngOnInit(): void {
-    this.myform = new FormGroup({
-      name: new FormControl('', [
 
-      ]),
-
-    });
-  }
 
 }
