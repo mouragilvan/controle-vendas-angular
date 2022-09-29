@@ -46,8 +46,7 @@ export class SaleComponent implements OnInit {
 
   add(item) {   
     for( let p of this.itensList ){
-        if(p.id == item.id){
-            p.quantidade +=item.quantidade;
+        if(p.id == item.id){           
             return;
         }
     } 

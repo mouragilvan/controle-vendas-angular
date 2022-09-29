@@ -14,21 +14,12 @@
             <div *ngIf="itemSelected.length>0" class="mt-4">
                 <div *ngFor="let item of itemSelected"  class="row mt-3">
                     <div class="col-5 lightcolor">
-                        {{item.name}}
-                        <span style="float: right">
-                            QUANTIDADE:&nbsp;
-                        <button class="btn btn-primary" (click)="setQuantidade('sub',item)">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        {{item.quantidade}}
-                        <button class="btn btn-primary" (click)="setQuantidade('sum',item)">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                       </span>
+                        {{item.name}}                        
+                      
                     </div>
                     
                     <div class="col-3 lightcolor no-padding">
-                        <button class="btn btn-success btn-block" (click)="add(item)">
+                        <button class="btn btn-secondary btn-block" (click)="add(item)">
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -42,18 +33,10 @@
             <div *ngIf="itensList.length > 0" class="row mt-4" >
               <div class="col-5 pt-2" style="border: 1px solid lightgray;">
                 <p *ngFor="let p of itensList">
-                    {{p?.name}}
-                    <span style="float: right">
-                        QUANTIDADE:&nbsp;
-                    <button class="btn btn-primary" (click)="setQuantidade('sub',p)">
+                    {{p?.name}}                    
+                    <button class="btn btn-warning" (click)="remove(p)">
                         <i class="fa fa-minus"></i>
-                    </button>
-                    {{p.quantidade}}
-                    <button class="btn btn-primary" (click)="setQuantidade('sum',p)">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                   </span>
-                    
+                    </button> 
                 </p> 
               </div>
               <div class="col-3 no-padding" >
